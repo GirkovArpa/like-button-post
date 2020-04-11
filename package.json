@@ -1,0 +1,11 @@
+{
+  "name": "like-button-post",
+  "version": "1.0.0",
+  "description": "Simple example of telling the server a user clicked the 'like' button",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "author": "GirkovArpa",
+  "license": "MIT"
+}
