@@ -4,19 +4,32 @@
 </header>
 
 <body>
-  <button id="like" onclick="like()">Like!</button>
+  <label for="button" id="label">0 likes </label>
+  <button name="button" id="like" onclick="like()">Like!</button>
   <script>
+    const getLikes = async () => {
+      const response = await fetch('/likes', { method: 'GET' });
+      const result = await response.json();
+      const likes = result.likes;
+      const label = document.getElementById('label');
+      label.innerHTML = likes + " likes";
+    }
+
+    getLikes();
+    
     const like = async () => {
-      let response = await fetch('/like', {
+      const response = await fetch('/like', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify({ username: "Bob" })
       });
-      let result = await response.text();
       const button = document.getElementById('like');
-      button.innerHTML = result;
+      const label = document.getElementById('label');
+      const result = await response.json();
+      const likes = result.likes;
+      label.innerHTML = likes + " likes";
       button.disabled = true;
     }
   </script>
