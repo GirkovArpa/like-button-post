@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<header>
+  <title>Hello World!</title>
+</header>
+
+<body>
+  <button id="like" onclick="like()">Like!</button>
+  <script>
+    const like = async () => {
+      let response = await fetch('/like', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify({ username: "Bob" })
+      });
+      let result = await response.text();
+      const button = document.getElementById('like');
+      button.innerHTML = result;
+      button.disabled = true;
+    }
+  </script>
+</body>
+
+</html>
